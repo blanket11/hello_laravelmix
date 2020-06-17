@@ -1,10 +1,12 @@
 let mix = require('laravel-mix');
 require('laravel-mix-polyfill');
+require('laravel-mix-ejs')
 
 mix
+.ejs('src/', 'dist/')
 // polyfill
 // https://laravel-mix.com/extensions/polyfill
-.polyfill({})
+// .polyfill({})
 // javascript
 .js('src/js/app.js', 'dist/assets/js/')
 // Scss
