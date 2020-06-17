@@ -3,7 +3,7 @@ require('laravel-mix-polyfill');
 require('laravel-mix-ejs')
 
 mix
-.ejs('src/', 'dist/')
+.ejs('src/**/*.ejs', 'dist/')
 // polyfill
 // https://laravel-mix.com/extensions/polyfill
 // .polyfill({})
