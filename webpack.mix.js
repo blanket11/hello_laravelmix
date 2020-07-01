@@ -1,6 +1,7 @@
 let mix = require('laravel-mix');
 require('laravel-mix-polyfill');
-require('laravel-mix-ejs')
+require('laravel-mix-ejs');
+require('laravel-mix-eslint');
 
 mix
 .ejs('resources/views/**/*.ejs', 'public',{},{
@@ -13,6 +14,7 @@ mix
 
 // javascript
 .js('resources/js/app.js', 'public/assets/js/')
+.eslint()
 
 // Scss
 .sass('resources/scss/style.scss', 'public/assets/css/')
