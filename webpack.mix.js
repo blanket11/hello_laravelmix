@@ -2,6 +2,9 @@ let mix = require('laravel-mix');
 require('laravel-mix-polyfill');
 require('laravel-mix-ejs');
 require('laravel-mix-eslint');
+require('laravel-mix-stylelint');
+
+const styleLintPlugin = require('stylelint-webpack-plugin');
 
 mix
 .ejs('resources/views/**/*.ejs', 'public',{},{
@@ -22,6 +25,15 @@ mix
     processCssUrls: false,
   }
 )
+.webpackConfig({
+  plugins: [
+      new styleLintPlugin({
+          files: ['**/*.scss'],
+          configFile: path.join(__dirname, '.stylelintrc.js'),
+          syntax: 'scss'
+      })
+  ]
+})
 
 // browserSync
 // URL: https://browsersync.io/docs/options/
