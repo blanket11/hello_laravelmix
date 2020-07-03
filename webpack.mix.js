@@ -1,18 +1,24 @@
 let mix = require('laravel-mix');
 require('laravel-mix-polyfill');
-require('laravel-mix-ejs')
+require('laravel-mix-ejs');
+require('laravel-mix-eslint');
 
 mix
-.ejs('src/**/*.ejs', 'dist/')
-// polyfill
-// https://laravel-mix.com/extensions/polyfill
-// .polyfill({})
+.ejs('resources/views/**/*.ejs', 'public',{},{
+  root: 'resources/views',
+  base: 'resources/views',
+  partials: 'resources/views/partials'
+})
+// [polyfill](https://laravel-mix.com/extensions/polyfill)
+.polyfill({})
+
 // javascript
-.js('src/js/app.js', 'dist/assets/js/')
+.js('resources/js/app.js', 'public/assets/js/')
+.eslint()
+
 // Scss
-.sass('src/scss/style.scss', 'dist/assets/css/')
-.options(
-  {
+.sass('resources/scss/style.scss', 'public/assets/css/')
+.options({
     processCssUrls: false,
   }
 )
@@ -21,8 +27,8 @@ mix
 // URL: https://browsersync.io/docs/options/
 .browserSync(
   {
-    files: 'dist/**/*',
-    server: 'dist',
+    files: 'public/**/*',
+    server: 'public',
     proxy: false
   }
 );
