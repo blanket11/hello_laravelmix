@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+let fs = require('fs-extra')
 require('laravel-mix-polyfill');
 require('laravel-mix-ejs');
 require('laravel-mix-eslint');
@@ -7,6 +8,10 @@ require('laravel-mix-copy-watched');
 
 const styleLintPlugin = require('stylelint-webpack-plugin');
 
+// 初期化
+fs.removeSync('public/');
+
+// laravel mix
 mix
 .ejs('resources/views/**/*.ejs', 'public',{},{
   root: 'resources/views',
