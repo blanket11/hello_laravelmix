@@ -3,6 +3,7 @@ require('laravel-mix-polyfill');
 require('laravel-mix-ejs');
 require('laravel-mix-eslint');
 require('laravel-mix-stylelint');
+require('laravel-mix-copy-watched');
 
 const styleLintPlugin = require('stylelint-webpack-plugin');
 
@@ -36,10 +37,14 @@ mix
   ]
 })
 
+.copyWatched('resources/images/*', 'public/assets/images')
+
 // browserSync
 // URL: https://browsersync.io/docs/options/
 .browserSync(
   {
+    host: 'localhost',
+    port: 3000,
     files: 'public/**/*',
     server: 'public',
     proxy: false
